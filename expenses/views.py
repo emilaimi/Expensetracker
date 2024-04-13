@@ -14,7 +14,7 @@ def add_expense(request):
     if request.method == 'POST':
         form = ExpenseForm(request.POST)
         if form.is_valid():
-            expense = form.save()
+            expense = form.save(commit = False)
             expense.user = request.user
             expense.save()
             return redirect('expense_list')
